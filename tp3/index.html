@@ -1,0 +1,167 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>TP3 - Racing Game</title>
+
+  <link rel="shortcut icon" href="favicon.ico" />
+  <link rel="stylesheet" href="styles.css">
+
+  <script async src="https://unpkg.com/es-module-shims@1.8.0/dist/es-module-shims.js"></script>
+
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.156.1/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.156.1/examples/jsm/"
+      }
+    }
+  </script>
+
+  <style>
+    @font-face {
+      font-family: 'TechnoRaceItalic';
+      src: url('./fonts/techno-race/TechnoRaceItalic-eZRWe.otf') format('opentype'),
+    }
+
+    body {
+      margin: 0;
+      overflow: hidden;
+      font-family: "TechnoRaceItalic";
+      font-size: 20px;
+    }
+
+    #startMenu, #finalScreen {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.8);
+      border: 1px solid #ccc;
+      text-align: center;
+      /* display: none */
+    }
+
+    #countdown {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.8);
+      border: 1px solid #ccc;
+      text-align: center;
+      display: none;
+    }
+
+    #doneMenu,
+    #obstaclePickingDoneMenu,
+    #obstaclePositionDoneMenu,
+    #obstacleMenu {
+      position: absolute;
+      top: 85%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 10px;
+      background-color: rgba(255, 255, 255, 0.8);
+      border: 1px solid #ccc;
+      text-align: center;
+      display: none;
+    }
+
+    #startButton {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    #authors {
+      margin-top: 20px;
+      font-size: 14px;
+    }
+
+    #playerName {
+      margin-top: 20px;
+      padding: 8px;
+      font-size: 14px;
+    }
+
+    #pickManualCarButton,
+    #pickAutonomousCarButton, #modeButton, #returnToMenuButton {
+      margin: 10px;
+      padding: 5px 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    #lapControls {
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #decreaseLap,
+  #increaseLap {
+    margin: 10px;
+    padding: 5px 10px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  #lapCount {
+    font-size: 16px;
+  }
+  </style>
+
+</head>
+
+<body>
+  <div id="startMenu">
+    <h2>Welcome to FEUP's Racing Game</h2>
+    <label for="playerName">Player Name:</label>
+    <input type="text" id="playerName" placeholder="Enter your name" required>
+    <button id="pickManualCarButton">Pick Manual Car</button>
+    <button id="pickAutonomousCarButton">Pick Autonomous Car</button>
+    <button id="modeButton">Toggle Difficulty</button>
+  </br>
+    <div id="lapControls">
+      <button id="decreaseLap">-</button>
+      <span id="lapCount">3 Laps</span>
+      <button id="increaseLap">+</button>
+    </div>
+  </br>
+    <button id="startButton">Start Game</button>
+    <p id="authors">Authors: <br>Nuno Alves, up202302778 <br>Sofia Costa, up202300565</p>
+  </div>
+  <div id="finalScreen" style="display: none;">
+    <h2>Game Over</h2>
+    <div id="difficultyInfo"></div>
+  </br>
+    <div id="results"></div>
+    <button id="returnToMenuButton">Return to Main Menu</button>
+  </div>
+
+  <div id="doneMenu">
+    <button id="carPickingDone">Done</button>
+  </div>
+  <div id="obstaclePositionDoneMenu">
+    <p>Disable camera controls to drag the obstacle to the desired position.</p>
+    <button id="obstaclePositionDone">Done</button>
+  </div>
+  <div id="obstacleMenu">
+    <button id="pickObstacle">Add Obstacle</button>
+  </div>
+  <div id="obstaclePickingDoneMenu">
+    <button id="obstaclePickingDone">Done</button>
+    <button id="positionObstacle">Position Obstacle</button>
+  </div>
+
+  <div id="countdown">3</div>
+  <div id="canvas"></div>
+  <div id="camera"></div>
+  <script type="module" src="main.js"></script>
+</body>
+
+</html>

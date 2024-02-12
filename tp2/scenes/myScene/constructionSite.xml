@@ -1,0 +1,1350 @@
+<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<yaf>
+    <!-- Global configuration block -->
+    <globals background="0 0 0 1" ambient="1 1 1 1" />
+
+    <fog color="1.0 1.0 1.0 1.0" near="30.0" far="100.0" />
+
+    <skybox size="1000 1000 1000" 
+        center="0 0 0" 
+        emissive="1 1 1 0.5" 
+        intensity="0.1" 
+        front="scenes/myScene/textures/front.jpg" 
+        back="scenes/myScene/textures/back.jpg" 
+        up="scenes/myScene/textures/up.jpg" 
+        down="scenes/myScene/textures/down.jpg"        
+        right="scenes/myScene/textures/right.jpg" 
+        left="scenes/myScene/textures/left.jpg" 
+    />   
+    
+    <!-- Cameras block -->
+    <cameras initial="Perspective">
+        <perspective id="Perspective"
+            angle="75"
+            near="0.1"
+            far="1000"
+            location="10 10 3"
+            target="0 0.0 0" />
+
+        <orthogonal id="Left"
+            near="0.1"
+            far="1000"
+            location="0 15 0"
+            target="0.0 15 0.0"
+            left="-5"
+            right="5"
+            bottom="-5"
+            top="-5" />
+        <orthogonal id="Top"
+            near="0.1"
+            far="1000"
+            location="0 0 15"
+            target="0.0 15 0.0"
+            left="-5"
+            right="5"
+            bottom="-5"
+            top="-5" />
+        <orthogonal id="Front"
+            near="0.1"
+            far="1000"
+            location="0 15 0"
+            target="0.0 15 0.0"
+            left="-5"
+            right="5"
+            bottom="-5"
+            top="-5" />
+        <orthogonal id="Back"
+            near="0.1"
+            far="1000"
+            location="0 15 0"
+            target="0.0 15 0.0"
+            left="5"
+            right="-5"
+            bottom="-5"
+            top="-5" />
+        <orthogonal id="Right"
+            near="0.1"
+            far="1000"
+            location="0 -15 0"
+            target="0.0 -15 0.0"
+            left="-5"
+            right="5"
+            bottom="-5"
+            top="-5" />
+    </cameras>
+
+    <!-- Textures block -->
+    <textures>
+        <texture 
+            id="floorTex" 
+            filepath="scenes/myScene/textures/floor.jpg"
+            mipmap0="scenes/myScene/textures/floor1024.jpg" 
+            mipmap1="scenes/myScene/textures/floor512.jpg" 
+            mipmap2="scenes/myScene/textures/floor256.jpg" 
+            mipmap3="scenes/myScene/textures/floor128.jpg" 
+            mipmap4="scenes/myScene/textures/floor64.jpg" 
+            mipmap5="scenes/myScene/textures/floor32.jpg" 
+            mipmap6="scenes/myScene/textures/floor16.jpg" 
+            mipmap7="scenes/myScene/textures/floor8.jpg" 
+        />
+        <texture id="netTex" filepath="scenes/myScene/textures/netTex.jpeg"/>
+        <texture id="sandTex" filepath="scenes/myScene/textures/sandTex.jpeg"/>
+        <texture id="concreteTex" filepath="scenes/myScene/textures/concreteTex.jpeg"/>
+        <texture id="metalTex" filepath="scenes/myScene/textures/metalTex.jpeg"/>
+
+        <texture id="blueContainerTex" filepath="scenes/myScene/textures/blueContainer.jpeg"/>
+        <texture id="redContainerTex" filepath="scenes/myScene/textures/redContainer.jpeg"/>
+        <texture id="yellowContainerTex" filepath="scenes/myScene/textures/yellowContainer.jpeg"/>
+        <texture id="greenContainerTex" filepath="scenes/myScene/textures/greenContainer.jpeg"/>
+
+        <texture id="lampTex" filepath="scenes/myScene/textures/lampTex.jpeg"/>
+        <texture id="lightGlassTex" filepath="scenes/myScene/textures/lightGlassTex.jpeg"/>
+
+        <texture id="ballTex" filepath="scenes/myScene/textures/ballTex.jpg"/>
+
+        <texture id="bumpTex" filepath="scenes/myScene/textures/bump.jpeg"/>
+        <texture id="specularTex" filepath="scenes/myScene/textures/specular.png"/>
+        
+        <texture id="plasticTex" filepath="scenes/myScene/textures/plasticTex.jpeg"/>
+        <texture id="wcTex" filepath="scenes/myScene/textures/wcTex.jpeg"/>
+
+        <texture id="drainTex" filepath="scenes/myScene/textures/drainTex.png"/>
+        <texture id="videoTex" filepath="scenes/myScene/textures/ad.mp4"/>
+
+    </textures>
+
+    <!-- Materials block -->
+    <materials>
+
+    <!-- check texture mapping once the parser is fully functional -->
+		<material id="floorApp" 
+            emissive="0.0 0.0 0.0 1" 
+            color="1.0 1.0 1.0 1.0"  
+            specular="0 0 0 0" 
+            shininess="30" 
+            textureref="floorTex" 
+            texlength_s="1" 
+            texlength_t="1" 
+            twosided = "true" />
+
+       	<material id="wallApp" 
+            emissive="0.0 0.0 0.0 1.0" 
+			color="0.1 0.1 0.1 1.0" 
+            specular="0 0 0 0" 
+            shininess="30"  
+            textureref="netTex" 
+            twosided = "true" />
+
+        <material id="metalApp" 
+            emissive="0.0 0.0 0.0 1" 
+            color="1.0 1.0 1.0 1.0"  
+            specular="0 0 0 0" 
+            shininess="30" 
+            textureref="metalTex" 
+            texlength_s="4" 
+            texlength_t="1" 
+            twosided = "true" 
+            specularref="specularTex"
+        />
+
+        <material id="sandApp" 
+            emissive="0.0 0.0 0.0 0" 
+			color="0.8 0.6 0.7 1.0" 
+            specular="0 0 0 0" 
+            shininess="30"  
+            twosided = "true" 
+            textureref="sandTex" 
+            texlength_s="1" 
+            texlength_t="1" 
+            bumpref="bumpTex" 
+            bumpscale = "0.1"
+        />
+
+        <material id="buildingApp" 
+            emissive="0.0 0.0 0.0 1" 
+            color="1.0 1.0 1.0 1.0"  
+            specular="0 0 0 0" 
+            shininess="30" 
+            textureref="concreteTex" 
+            texlength_s="4" 
+            texlength_t="1" 
+            twosided = "true" />
+
+        <material id="blueContainerApp" 
+            emissive="0.0 0.0 0.0 1" 
+            color="1.0 1.0 1.0 1.0"  
+            specular="0 0 0 0" 
+            shininess="30" 
+            textureref="blueContainerTex" 
+            texlength_s="4" 
+            texlength_t="1" 
+            twosided = "true" />
+        <material id="redContainerApp" 
+            emissive="0.0 0.0 0.0 1" 
+            color="1.0 1.0 1.0 1.0"  
+            specular="0 0 0 0" 
+            shininess="30" 
+            textureref="redContainerTex" 
+            texlength_s="4" 
+            texlength_t="1" 
+            twosided = "true" />
+        <material id="greenContainerApp" 
+            emissive="0.0 0.0 0.0 1" 
+            color="1.0 1.0 1.0 1.0"  
+            specular="0 0 0 0" 
+            shininess="30" 
+            textureref="greenContainerTex" 
+            texlength_s="4" 
+            texlength_t="1" 
+            twosided = "true" />
+        <material id="yellowContainerApp" 
+            emissive="0.0 0.0 0.0 1" 
+            color="1.0 1.0 1.0 1.0"  
+            specular="0 0 0 0" 
+            shininess="30" 
+            textureref="yellowContainerTex" 
+            texlength_s="4" 
+            texlength_t="1" 
+            twosided = "true" />
+
+        <material id="lampTex" 
+            emissive="0.0 0.0 0.0 1" 
+            color="1.0 1.0 1.0 1.0"  
+            specular="0 0 0 0" 
+            shininess="30" 
+            textureref="yellowContainerTex" 
+            texlength_s="4" 
+            texlength_t="1" 
+            twosided = "true" />
+        <material id="lightGlassTex" 
+            emissive="0.0 0.0 0.0 1" 
+            color="1.0 1.0 1.0 1.0"  
+            specular="0 0 0 0" 
+            shininess="30" 
+            textureref="yellowContainerTex" 
+            texlength_s="4" 
+            texlength_t="1" 
+            twosided = "true" />
+            
+        <!-- added bump texture here -->
+        <material id="ballApp" 
+            emissive="0.0 0.0 0.0 1" 
+            color="1.0 1.0 1.0 1.0"  
+            specular="0 0 0 0" 
+            shininess="30" 
+            textureref="ballTex" 
+            texlength_s="10" 
+            texlength_t="10" 
+            twosided = "true" 
+            bumpref="bumpTex" 
+            bumpscale = "0.1"
+        />
+        <material id="wireApp" 
+            emissive="0.0 0.0 0.0 1" 
+            color="1.0 1.0 1.0 1.0"  
+            specular="0 0 0 0" 
+            shininess="30" 
+            textureref="ballTex" 
+            texlength_s="10" 
+            texlength_t="10" 
+            twosided = "true" 
+        />
+        <material id="pillarApp" 
+            emissive="0.0 0.0 0.0 1" 
+            color="1.0 1.0 1.0 1.0"  
+            specular="0 0 0 0" 
+            shininess="30" 
+            textureref="ballTex" 
+            texlength_s="6" 
+            texlength_t="6" 
+            twosided = "true" 
+        />
+        <material id="pillarAppW" 
+            emissive="0.0 0.0 0.0 1" 
+            color="1.0 1.0 1.0 1.0"  
+            specular="0 0 0 0" 
+            shininess="30" 
+            textureref="ballTex" 
+            texlength_s="10" 
+            texlength_t="10" 
+            twosided = "true" 
+            wireframe="true"
+        />
+
+        <material id="wcApp-white" 
+            emissive="0.0 0.0 0.0 1" 
+            color="1.0 1.0 1.0 1.0"  
+            specular="0 0 0 0" 
+            shininess="30" 
+            textureref="plasticTex" 
+            texlength_s="4" 
+            texlength_t="1" 
+            twosided = "true" />
+        <material id="wcApp-blue" 
+            emissive="0.0 0.0 0.0 1" 
+            color="1.0 1.0 1.0 1.0"  
+            specular="0 0 0 0" 
+            shininess="30" 
+            textureref="wcTex" 
+            texlength_s="4" 
+            texlength_t="1" 
+            twosided = "true" 
+            bumpref="bumpTex" 
+            bumpscale = "0.1"
+            />
+
+        <material id="drainApp" 
+            emissive="0.0 0.0 0.0 1" 
+            color="1.0 1.0 1.0 1.0"  
+            specular="0 0 0 0" 
+            shininess="30" 
+            textureref="drainTex" 
+            texlength_s="4" 
+            texlength_t="1" 
+            twosided = "true" />
+
+        <material id="videoApp" 
+            emissive="0.0 0.0 0.0 1" 
+            color="1.0 1.0 1.0 1.0"  
+            specular="0 0 0 0" 
+            shininess="30" 
+            textureref="videoTex" 
+            texlength_s="4" 
+            texlength_t="1" 
+            twosided = "true" />
+
+    </materials>
+
+    <!-- Graph block -->
+    <graph rootid="scene">
+    
+        <node id="scene">
+            <children>
+                <noderef id="leftWall" />
+                <noderef id="rightWall" />
+
+                <noderef id="floor" />
+
+                <noderef id="building" />
+                <noderef id="pipes" />
+                <noderef id="sand" />
+                <noderef id="containers" />
+                <noderef id="WC-1" />
+                <noderef id="WC-2" />
+
+                <noderef id="lamp1" />
+                <noderef id="lamp2" />
+
+                <noderef id="craneWithBall" />
+
+                <noderef id="polygonObj" />
+                <noderef id="billboard" />
+
+                <spotlight id="light4" enabled="true"
+                    color="1.0 1.0 1.0 1"
+                    intensity="10.0"
+                    distance="50"
+                    decay="0"
+                    castshadow="true"
+                    position="4.74 6.5 -18.06"
+                    target="-17 2.5 7"
+                    penumbra="0.1"
+                    angle="30" />
+                <spotlight id="light5" enabled="true"
+                    color="1.0 1.0 1.0 1"
+                    intensity="10.0"
+                    distance="50"
+                    decay="0"
+                    castshadow="true"
+                    position="3.96 6.5 -15.6"
+                    target="-13 2.5 7"
+                    penumbra="0.1"
+                    angle="30" />
+
+                <spotlight id="light6" enabled="true"
+                    color="1.0 1.0 1.0 1"
+                    intensity="10.0"
+                    distance="50"
+                    decay="0"
+                    castshadow="true"
+                    position="12.72 6.7 19.8" 
+                    target="-5 3 0"
+                    penumbra="0.1"
+                    angle="30" />
+                <spotlight id="light7" enabled="true"
+                    color="1.0 1.0 1.0 1"
+                    intensity="10.0"
+                    distance="50"
+                    decay="0"
+                    castshadow="true"
+                    position="18.24 6.7 14.28"
+                    target="1 3 0"
+                    penumbra="0.1"
+                    angle="30" />
+
+                <directionallight id="light8" enabled="true"
+                    color="1.0 1.0 1.0 1"
+                    intensity="1.0"
+                    castshadow="true"
+                    position="4 4 4" />
+            </children>
+        </node>
+
+        <!-- FLOOR -->
+        <node id="floor" castshadows="true" receiveshadows="true">
+            <transforms>
+                <translate value3="0 0 0" />
+                <rotate value3="-90 0.0 0.0" />
+            </transforms>
+
+            <materialref id="floorApp" />
+
+            <children>
+                <primitive>
+                    <box xyz1="-20 -20 -1" xyz2="20 20 1" />
+                </primitive>
+            </children>
+        </node>
+
+        <!-- WALLS -->
+        <node id="leftWall" castshadows="true" receiveshadows="true">
+            <transforms>
+                <translate value3="-18 3 0" />
+                <rotate value3="0.0 90 0.0" />
+            </transforms>
+
+            <materialref id="wallApp" />
+
+            <children>
+                <primitive>
+                    <rectangle xy1="36 5" xy2="0 0" />
+                </primitive>
+            </children>
+        </node>
+
+        <node id="rightWall" castshadows="true" receiveshadows="true">
+            <transforms>
+                <translate value3="0 3 -18" />
+            </transforms>
+
+            <materialref id="wallApp" />
+
+            <children>
+                <primitive>
+                    <rectangle xy1="36 5" xy2="0 0" />
+                </primitive>
+            </children>
+        </node>
+
+        <!-- PIPES -->
+        <node id="pipe1">
+            <transforms>
+                <translate value3="3 1.5 0" />
+                <rotate value3="90 0 0.0" />
+            </transforms>
+
+            <materialref id="metalApp" />
+
+            <children>
+                <primitive>
+                    <cylinder base="0.5" top="0.5" height="10" slices="32" stacks="32" />
+                </primitive>
+            </children>
+        </node>
+
+        <node id="pipe2">
+            <transforms>
+                <translate value3="4 1.5 0" />
+                <rotate value3="90 0 0.0" />
+            </transforms>
+
+            <materialref id="metalApp" />
+
+            <children>
+                <primitive>
+                    <cylinder base="0.5" top="0.5" height="10" slices="32" stacks="32" />
+                </primitive>
+            </children>
+        </node>
+
+        <node id="pipe3">
+            <transforms>
+                <translate value3="5 1.5 0" />
+                <rotate value3="90 0 0.0" />
+            </transforms>
+
+             <materialref id="metalApp" />
+             
+            <children>
+                <primitive>
+                    <cylinder base="0.5" top="0.5" height="10" slices="32" stacks="32" />
+                </primitive>
+            </children>
+        </node>
+        <node id="pipe4">
+            <transforms>
+                <translate value3="3.5 2.3 0" />
+                <rotate value3="90 0 0.0" />
+            </transforms>
+
+             <materialref id="metalApp" />
+             
+            <children>
+                <primitive>
+                    <cylinder base="0.5" top="0.5" height="10" slices="32" stacks="32" />
+                </primitive>
+            </children>
+        </node>
+        <node id="pipe5">
+            <transforms>
+                <translate value3="4.5 2.3 0" />
+                <rotate value3="90 0 0.0" />
+            </transforms>
+
+             <materialref id="metalApp" />
+             
+            <children>
+                <primitive>
+                    <cylinder base="0.5" top="0.5" height="10" slices="32" stacks="32" />
+                </primitive>
+            </children>
+        </node>
+        <node id="pipe6">
+            <transforms>
+                <translate value3="4 3.1 0" />
+                <rotate value3="90 0 0.0" />
+            </transforms>
+
+            <materialref id="metalApp" />
+
+            <children>
+                <primitive>
+                    <cylinder base="0.5" top="0.5" height="10" slices="32" stacks="32" />
+                </primitive>
+            </children>
+        </node>
+
+
+        <node id="pipes" castshadows="true" receiveshadows="true">
+            <transforms>
+                <translate value3="5 0 0" />
+            </transforms>
+
+            <children>
+                <noderef id="pipe1" />
+                <noderef id="pipe2" />
+                <noderef id="pipe3" />
+                <noderef id="pipe4" />
+                <noderef id="pipe5" />
+                <noderef id="pipe6" />
+            </children>
+        </node>
+
+        <!-- SAND PIT -->
+        <node id="sand" castshadows="true" receiveshadows="true">
+            <transforms>
+                <translate value3="0 1 13" />
+                <rotate value3="-90 0 90" />
+                <scale value3="3 3 3" />
+            </transforms>
+
+            <materialref id="sandApp" />
+
+            <children>
+                <primitive>
+                   <nurbs degree_u="3" degree_v="3" parts_u="100" parts_v="100">
+                        <controlpoint xx="-1" yy="-1" zz="0.0" />
+                        <controlpoint xx="-0.5" yy="-1.5" zz="0.0" />
+                        <controlpoint xx="0.5" yy="-1.5" zz="0.0" />
+                        <controlpoint xx="1" yy="-1" zz="0.0" />
+
+                        <controlpoint xx="-1" yy="-0.5" zz="0.0" />
+                        <controlpoint xx="-0.5" yy="-0.5" zz="0.0" />
+                        <controlpoint xx="0.5" yy="-0.5" zz="0.0" />
+                        <controlpoint xx="1" yy="-0.5" zz="0.0" />
+
+                        <controlpoint xx="-1.5" yy="0.5" zz="0.0" />
+                        <controlpoint xx="-0.5" yy="0.5" zz="2.0" />
+                        <controlpoint xx="0.5" yy="0.5" zz="2.0" />
+                        <controlpoint xx="1.5" yy="0.5" zz="0.0" />
+
+                        <controlpoint xx="-1" yy="1" zz="0.0" />
+                        <controlpoint xx="-0.5" yy="1.5" zz="0.0" />
+                        <controlpoint xx="0.5" yy="1.5" zz="0.0" />
+                        <controlpoint xx="1" yy="1" zz="0.0" />
+                    </nurbs>
+
+
+                </primitive>
+            </children>
+        </node>
+
+        <!-- BUILDING -->
+        <node id="buildingFloor">
+            <transforms>
+                <translate value3="0 1.3 0" />
+                 <rotate value3="90 0 0" />
+            </transforms>
+
+            <materialref id="buildingApp" />
+
+            <children>
+                <primitive>
+                    <box xyz1="-5 -7 -0.6" xyz2="5 7 0.3" />
+                </primitive>
+            </children>
+        </node>
+
+        <node id="pillar1">
+            <transforms>
+                <translate value3="-4.7 4.7 -6.7" />
+                <rotate value3="90 0 0" />
+            </transforms>
+
+            <materialref id="pillarApp" />
+
+            <children>
+                <primitive>
+                    <box xyz1="-0.3 -0.3 0" xyz2="0.3 0.3 6" />
+                </primitive>
+            </children>
+        </node>
+
+        <node id="pillar2">
+            <transforms>
+                <translate value3="-4.7 4.7 6.7" />
+                <rotate value3="90 0 0" />
+            </transforms>
+
+            <materialref id="pillarApp" />
+
+            <children>
+                <primitive>
+                    <box xyz1="-0.3 -0.3 0" xyz2="0.3 0.3 6" />
+                </primitive>
+            </children>
+        </node>
+
+        <node id="pillar3">
+            <transforms>
+                <translate value3="4.7 4.7 6.7" />
+                <rotate value3="90 0 0" />
+            </transforms>
+
+            <materialref id="pillarApp" />
+
+            <children>
+                <primitive>
+                     <box xyz1="-0.3 -0.3 0" xyz2="0.3 0.3 6" />
+                </primitive>
+            </children>
+        </node>
+
+        <node id="pillar4">
+            <transforms>
+                <translate value3="4.7 4.7 -6.7" />
+                <rotate value3="90 0 0" />
+            </transforms>
+
+            <materialref id="pillarApp" />
+
+            <children>
+                <primitive>
+                     <box xyz1="-0.3 -0.3 0" xyz2="0.3 0.3 6" />
+                </primitive>
+            </children>
+        </node>
+
+        <!-- middle right -->
+        <node id="pillar5">
+            <transforms>
+                <translate value3="0.1 4.7 -6.7" />
+                <rotate value3="90 0 0" />
+            </transforms>
+
+            <materialref id="pillarAppW"/>
+
+            <children>
+                <primitive>
+                     <box xyz1="-0.3 -0.3 0" xyz2="0.3 0.3 6" />
+                </primitive>
+            </children>
+        </node>
+
+        <!-- middle left -->
+        <node id="pillar6">
+            <transforms>
+                <translate value3="0.1 4.7 6.7" />
+                <rotate value3="90 0 0" />
+            </transforms>
+
+            <materialref id="pillarAppW" />
+
+            <children>
+                <primitive>
+                    <box xyz1="-0.3 -0.3 0" xyz2="0.3 0.3 6" />
+                </primitive>
+            </children>
+        </node>
+
+        <!-- middle back -->
+        <node id="pillar7">
+            <transforms>
+                <translate value3="-4.7 4.7 -0.5" />
+                <rotate value3="90 0 0" />
+            </transforms>
+
+            <materialref id="pillarApp" />
+
+            <children>
+                <primitive>
+                    <box xyz1="-0.3 -0.3 0" xyz2="0.3 0.3 6" />
+                </primitive>
+            </children>
+        </node>
+
+        <node id="pillar8">
+            <transforms>
+                <translate value3="4.7 4.7 -0.5" />
+                <rotate value3="90 0 0" />
+            </transforms>
+
+            <materialref id="pillarApp" />
+
+            <children>
+                <primitive>
+                     <box xyz1="-0.3 -0.3 0" xyz2="0.3 0.3 6" />
+                </primitive>
+            </children>
+        </node>
+        <node id="pillar9">
+            <transforms>
+                <translate value3="0.1 4.7 -0.5" />
+                <rotate value3="90 0 0" />
+            </transforms>
+
+            <materialref id="pillarApp" />
+
+            <children>
+                <primitive>
+                     <box xyz1="-0.3 -0.3 0" xyz2="0.3 0.3 6" />
+                </primitive>
+            </children>
+        </node>
+        <node id="pillar10">
+            <transforms>
+                <translate value3="0.1 8 0" />
+            </transforms>
+
+            <materialref id="pillarApp" />
+
+            <children>
+                <primitive>
+                     <box xyz1="-0.3 -0.3 0" xyz2="0.3 0.3 14" />
+                </primitive>
+            </children>
+        </node>
+        <node id="pillar11">
+            <transforms>
+                <translate value3="4.7 8 0" />
+            </transforms>
+
+            <materialref id="pillarApp" />
+
+            <children>
+                <primitive>
+                     <box xyz1="-0.3 -0.3 0" xyz2="0.3 0.3 14" />
+                </primitive>
+            </children>
+        </node>
+        <node id="pillar12">
+            <transforms>
+                <translate value3="-4.7 8 0" />
+            </transforms>
+
+            <materialref id="pillarApp" />
+
+            <children>
+                <primitive>
+                     <box xyz1="-0.3 -0.3 0" xyz2="0.3 0.3 14" />
+                </primitive>
+            </children>
+        </node>
+        <node id="pillar13">
+            <transforms>
+                <translate value3="0 8 -0.5" />
+                 <rotate value3="0 90 0" />
+            </transforms>
+
+            <materialref id="pillarApp" />
+
+            <children>
+                <primitive>
+                     <box xyz1="-0.3 -0.3 0" xyz2="0.3 0.3 10" />
+                </primitive>
+            </children>
+        </node>
+        <node id="pillar14">
+            <transforms>
+                <translate value3="0 8 -6.7" />
+                 <rotate value3="0 90 0" />
+            </transforms>
+
+            <materialref id="pillarApp" />
+
+            <children>
+                <primitive>
+                     <box xyz1="-0.3 -0.3 0" xyz2="0.3 0.3 10" />
+                </primitive>
+            </children>
+        </node>
+        <node id="pillar15">
+            <transforms>
+                <translate value3="0 8 6.7" />
+                 <rotate value3="0 90 0" />
+            </transforms>
+
+            <materialref id="pillarApp" />
+
+            <children>
+                <primitive>
+                     <box xyz1="-0.3 -0.3 0" xyz2="0.3 0.3 10" />
+                </primitive>
+            </children>
+        </node>
+
+        <lod id="building">
+            <noderef id="highDetail"  mindist="0"/>
+            <noderef id="mediumDetail"  mindist="80"/>
+            <noderef id="lowDetail"  mindist="150"/>
+        </lod>
+
+        <node id="highDetail">
+            <children>
+                <noderef id="buildingFloor" />
+                <noderef id="pillar1" />
+                <noderef id="pillar2" />
+                <noderef id="pillar3" />
+                <noderef id="pillar4" />
+
+                <noderef id="pillar5" />
+                <noderef id="pillar6" />
+                <noderef id="pillar7" />
+                <noderef id="pillar8" />
+                <noderef id="pillar9" />
+                <noderef id="pillar10" />
+                <noderef id="pillar11" />
+                <noderef id="pillar12" />
+
+                <noderef id="pillar13" />
+                <noderef id="pillar14" />
+                <noderef id="pillar15" />
+            </children>
+        </node>
+        
+        <node id="mediumDetail">
+            <children>
+                <noderef id="buildingFloor" />
+                <noderef id="pillar1" />
+                <noderef id="pillar2" />
+                <noderef id="pillar3" />
+                <noderef id="pillar4" />
+            </children>
+        </node>
+
+        <node id="lowDetail">
+            <children>
+                <noderef id="buildingFloor" />
+            </children>
+        </node>
+
+        <node id="building" castshadows="true" receiveshadows="true">
+            <transforms>
+                <translate value3="-8 0 -3" />
+                <scale value3="1.2 1.2 1.2" />
+            </transforms>
+
+            <children>
+                <lodref id="building" />    
+
+                <noderef id="buildingFloor" />
+                <noderef id="pillar1" />
+                <noderef id="pillar2" />
+                <noderef id="pillar3" />
+                <noderef id="pillar4" />
+
+                <noderef id="pillar5" />
+                <noderef id="pillar6" />
+                <noderef id="pillar7" />
+                <noderef id="pillar8" />
+                <noderef id="pillar9" />
+                <noderef id="pillar10" />
+                <noderef id="pillar11" />
+                <noderef id="pillar12" />
+
+                <noderef id="pillar13" />
+                <noderef id="pillar14" />
+                <noderef id="pillar15" />
+            </children>
+        </node>
+
+        <!-- CONTAINERS -->
+        <node id="container1">
+            <transforms>
+                <translate value3="0 0 0" />
+                <rotate value3="0 90 0" />
+            </transforms>
+
+            <materialref id="blueContainerApp" />
+
+            <children>
+                <primitive>
+                    <box xyz1="0 0 0" xyz2="2.5 3 8" />
+                </primitive>
+            </children>
+        </node>
+        <node id="container2">
+            <transforms>
+                <translate value3="0 0 -2.5" />
+                <rotate value3="0 90 0" />
+            </transforms>
+
+            <materialref id="redContainerApp" />
+
+            <children>
+                <primitive>
+                    <box xyz1="0 0 0" xyz2="2.5 3 8" />
+                </primitive>
+            </children>
+        </node>
+        <node id="container3">
+            <transforms>
+                <translate value3="0 3 0" />
+                <rotate value3="0 90 0" />
+            </transforms>
+
+            <materialref id="greenContainerApp" />
+
+            <children>
+                <primitive>
+                    <box xyz1="0 0 0" xyz2="2.5 3 8" />
+                </primitive>
+            </children>
+        </node>
+        <node id="container4">
+            <transforms>
+                <translate value3="0 3 -2.5" />
+                <rotate value3="0 90 0" />
+            </transforms>
+
+            <materialref id="yellowContainerApp" />
+
+            <children>
+                <primitive>
+                    <box xyz1="0 0 0" xyz2="2.5 3 8" />
+                </primitive>
+            </children>
+        </node>
+
+        <node id="containers" castshadows="true" receiveshadows="true">
+            <transforms>
+                <translate value3="-13 2.5 15" />
+            </transforms>
+
+            <children>
+                <noderef id="container1" />
+                <noderef id="container2" />
+                <noderef id="container3" />
+                <noderef id="container4" />
+            </children>
+        </node>
+
+        <!-- WATER CLOSETS -->
+        <node id="WC-1" castshadows="true" receiveshadows="true">
+            <transforms>
+                <translate value3="13 0 -16.9" />
+            </transforms>
+
+            <children>
+                <noderef id="WC-middle" />
+                <noderef id="WC-top" />
+                <noderef id="WC-bottom" />
+            </children>
+        </node>
+        <node id="WC-2" castshadows="true" receiveshadows="true">
+            <transforms>
+                <translate value3="16 0 -16.9" />
+            </transforms>
+
+            <children>
+                <noderef id="WC-middle" />
+                <noderef id="WC-top" />
+                <noderef id="WC-bottom" />
+            </children>
+        </node>
+
+        <node id="WC-middle">
+            <transforms>
+                <translate value3="0 3.2 0" />
+                <rotate value3="90 0 0" />
+            </transforms>
+
+            <materialref id="wcApp-blue" />
+
+            <children>
+                <primitive>
+                    <box xyz1="0 0 0" xyz2="2 2 4" />
+                </primitive>
+            </children>
+        </node>
+        <node id="WC-top">
+            <transforms>
+                <translate value3="0 5 0" />
+                <rotate value3="90 0 0" />
+            </transforms>
+
+            <materialref id="wcApp-white" />
+
+            <children>
+                <primitive>
+                    <box xyz1="0 0 0" xyz2="2.1 2.1 0.5" />
+                </primitive>
+            </children>
+        </node>
+        <node id="WC-bottom">
+            <transforms>
+                <translate value3="0 1.2 0" />
+                <rotate value3="90 0 0" />
+            </transforms>
+
+            <materialref id="wcApp-white" />
+
+            <children>
+                <primitive>
+                    <box xyz1="0 0 0" xyz2="2.1 2.1 0.5" />
+                </primitive>
+            </children>
+        </node>
+
+        <!-- SPOTLIGHT 3D OBJECTS -->
+        <node id="leg1">
+            <transforms>
+                <translate value3="0 1.5 0.5" />
+                <rotate value3="-40 0 0" />
+            </transforms>
+
+            <materialref id="yellowContainerApp" />
+
+            <children>
+                <primitive>
+                     <cylinder base="0.1" top="0.1" height="1.5" slices="32" stacks="32" />
+                </primitive>
+            </children>
+        </node>
+        <node id="leg2">
+            <transforms>
+                <translate value3="0.5 1.5 0" />
+                <rotate value3="0 0 40" />
+            </transforms>
+
+            <materialref id="yellowContainerApp" />
+
+            <children>
+                <primitive>
+                     <cylinder base="0.1" top="0.1" height="1.5" slices="32" stacks="32" />
+                </primitive>
+            </children>
+        </node>
+        <node id="leg3">
+            <transforms>
+                <translate value3="0 1.5 -0.5" />
+                <rotate value3="40 0 0" />
+            </transforms>
+
+            <materialref id="yellowContainerApp" />
+
+            <children>
+                <primitive>
+                     <cylinder base="0.1" top="0.1" height="1.5" slices="32" stacks="32" />
+                </primitive>
+            </children>
+        </node>
+        <node id="body">
+            <transforms>
+                <translate value3="0 4 0" />
+                <rotate value3="0 0 0" />
+            </transforms>
+
+            <materialref id="yellowContainerApp" />
+
+            <children>
+                <primitive>
+                     <cylinder base="0.1" top="0.1" height="4" slices="32" stacks="32" />
+                </primitive>
+            </children>
+        </node>
+        <node id="cross">
+            <transforms>
+                <translate value3="0 6 0" />
+                <rotate value3="90 0 0" />
+            </transforms>
+
+            <materialref id="yellowContainerApp" />
+
+            <children>
+                <primitive>
+                     <cylinder base="0.1" top="0.1" height="2.3" slices="32" stacks="32" />
+                </primitive>
+            </children>
+        </node>
+        <node id="lampBox1">
+            <transforms>
+                <translate value3="0 6.5 0.75" />
+                <rotate value3="0 0 -10" />
+            </transforms>
+
+            <materialref id="metalApp" />
+
+            <children>
+                <primitive>
+                   <box xyz1="0 0 0" xyz2="1 0.8 0.8" />
+                </primitive>
+            </children>
+        </node>
+        <node id="lampBox2">
+            <transforms>
+                <translate value3="0 6.5 -0.75" />
+                <rotate value3="0 0 -10" />
+            </transforms>
+
+            <materialref id="metalApp" />
+
+            <children>
+                <primitive>
+                     <box xyz1="0 0 0" xyz2="1 0.8 0.8" />
+                </primitive>
+            </children>
+        </node>
+        <node id="lampBox3">
+            <transforms>
+                <translate value3="0 6.5 0.75" />
+                <rotate value3="0 0 10" />
+            </transforms>
+
+            <materialref id="metalApp" />
+
+            <children>
+                <primitive>
+                   <box xyz1="0 0 0" xyz2="1 0.8 0.8" />
+                </primitive>
+            </children>
+        </node>
+        <node id="lampBox4">
+            <transforms>
+                <translate value3="0 6.5 -0.75" />
+                <rotate value3="0 0 10" />
+            </transforms>
+
+            <materialref id="metalApp" />
+
+            <children>
+                <primitive>
+                     <box xyz1="0 0 0" xyz2="1 0.8 0.8" />
+                </primitive>
+            </children>
+        </node>
+
+        <node id="lamp1" castshadows="true" receiveshadows="true">
+            <transforms>
+                <translate value3="2 0 -13" />
+                <rotate value3="0 45 0" />
+            </transforms>
+
+            <children>
+                <noderef id="leg1" />
+                <noderef id="leg2" />
+                <noderef id="leg3" />
+                <noderef id="body" />
+                <noderef id="cross" />
+                <noderef id="lampBox3" />
+                <noderef id="lampBox4" />
+            </children>
+        </node>
+
+        <node id="lamp2" castshadows="true" receiveshadows="true">
+            <transforms>
+                <translate value3="15 0 15" />
+                <rotate value3="0 -45 0" />
+            </transforms>
+
+            <children>
+                <noderef id="leg1" />
+                <noderef id="leg2" />
+                <noderef id="leg3" />
+                <noderef id="body" />
+                <noderef id="cross" />
+                <noderef id="lampBox1" />
+                <noderef id="lampBox2" />
+            </children>
+        </node>
+
+        <node id="ball">
+            <transforms>
+                <scale value3="0.1 0.1 0.1"/>
+                <translate value3="0 5 0" />
+            </transforms>
+
+            <materialref id="ballApp" />
+
+            <children>
+                <primitive>
+                    <sphere radius="15" slices="64" stacks="32"/>
+                </primitive>
+            </children>
+        </node>
+
+        <node id="wire">
+            <transforms>
+                <translate value3="0 12.9 0" />
+            </transforms>
+
+            <materialref id="wireApp" />
+
+            <children>
+                <primitive>
+                    <cylinder base="0.05" top="0.05" height="13" slices="32" stacks="32" />
+                </primitive>
+            </children>
+        </node>
+
+        <node id="wreckingBall" castshadows="true" receiveshadows="true">
+            <transforms>
+                <translate value3="14.75 0 -0.70" />
+            </transforms>
+
+            <children>
+                <noderef id="wire" />
+                <noderef id="ball" />
+            </children>
+        </node>
+
+        <node id="craneObject">
+            <transforms>
+                <scale value3="0.5 0.5 0.5"/>
+                <translate value3="0 0 0" />
+            </transforms>
+
+            <children>
+                <primitive>
+                     <model3d filepath="scenes/myScene/models/tower_crane/scene.gltf"/>
+                </primitive>
+            </children>
+        </node>
+
+        <node id="craneWithBall" castshadows="true" receiveshadows="true">
+            <transforms>
+                <translate value3="-8 0 -15" />
+                <translate value3="0 1.6 0" />
+                <rotate value3="0 -45 0"/>
+            </transforms>
+
+            <children>
+                <noderef id="craneObject" />
+                <noderef id="wreckingBall" />
+            </children>
+        </node>
+
+        <node id="polygonObj" castshadows="true" receiveshadows="true">
+            <transforms>
+                <translate value3="15 1.1 -14" />
+                <scale value3="0.1 0.1 0.1" />
+                <rotate value3="-90 0 90" />
+            </transforms>
+
+            <materialref id="drainApp" />
+
+            <children>
+                <primitive>
+                     <polygon radius="9" stacks="15" slices="32" color_c="255 0 0 1" color_p="0 0 255 1" />
+                </primitive>
+            </children>
+        </node>
+
+        <node id="billboardLeg1">
+            <transforms>
+                <translate value3="0 10 3.5" />
+            </transforms>
+
+             <materialref id="metalApp" />
+
+            <children>
+                <primitive>
+                     <box xyz1="0 0 0" xyz2="1 20 1" />
+                </primitive>
+            </children>
+        </node>
+
+        <node id="billboardLeg2">
+            <transforms>
+                <translate value3="0 10 -3.5" />
+            </transforms>
+
+             <materialref id="metalApp" />
+
+            <children>
+                <primitive>
+                     <box xyz1="0 0 0" xyz2="1 20 1" />
+                </primitive>
+            </children>
+        </node>
+
+        <node id="base">
+            <transforms>
+                <translate value3="0 20 0" />
+            </transforms>
+
+             <materialref id="wireApp" />
+
+            <children>
+                <primitive>
+                     <box xyz1="0 0 0" xyz2="5 1 10" />
+                </primitive>
+            </children>
+        </node>
+
+        <node id="screen">
+            <transforms>
+                <translate value3="0 23 0" />
+                <rotate value3="0 90 0" />
+            </transforms>
+
+             <materialref id="videoApp" />
+
+            <children>
+                <primitive>
+                     <rectangle xy1="10 5" xy2="0 0" />
+                </primitive>
+            </children>
+        </node>
+
+        <node id="billboard" castshadows="true" receiveshadows="true">
+            <transforms>
+                <translate value3="-19 0 13" />
+                <translate value3="0 0 0" />
+                <rotate value3="0 0 0"/>
+            </transforms>
+
+            <children>
+                <noderef id="billboardLeg1" />
+                <noderef id="billboardLeg2" />
+                <noderef id="base" />
+                <!-- <noderef id="screen" /> -->
+            </children>
+        </node>
+
+
+    </graph>
+</yaf>
+
+
+
